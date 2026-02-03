@@ -57,4 +57,88 @@
       font-size:44px;
       font-weight:800;
       letter-spacing:0.5px;
-      cursor:pointer; /* <*
+      cursor:pointer; /* <-- this is what got truncated in your file */
+      user-select:none;
+
+      transition: filter 120ms ease, transform 120ms ease;
+    }
+
+    .play-btn:hover{ filter:brightness(1.08); transform: translateY(-1px); }
+    .play-btn:active{ transform: translateY(0px) scale(0.995); }
+
+    .play-icon{
+      width:44px;
+      height:44px;
+      flex:0 0 auto;
+      display:block;
+    }
+
+    .play-options{
+      position:absolute;
+      top: calc(100% + 14px);
+      left:0;
+      right:0;
+      background:var(--panel-bg);
+      border-radius:18px;
+      padding:22px 28px;
+      box-shadow:0 18px 42px rgba(0,0,0,0.75);
+      display:none;
+    }
+
+    .play-options a{
+      display:block;
+      padding:14px 0;
+      font-size:40px;
+      color:var(--text);
+      text-decoration:none;
+      transition: opacity 120ms ease;
+    }
+    .play-options a:hover{ opacity:0.75; }
+
+    /* Hover open (desktop) */
+    @media (hover:hover){
+      .play-widget:hover .play-options{ display:block; }
+    }
+
+    /* Click open (mobile + click) */
+    .play-widget.active .play-options{ display:block; }
+  </style>
+</head>
+
+<body>
+  <div class="frame">
+    <div class="play-widget" id="playWidget">
+      <button class="play-btn" id="playBtn" type="button" aria-haspopup="true" aria-expanded="false">
+        <svg class="play-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <polygon points="24,16 52,32 24,48" fill="#ffffff"></polygon>
+        </svg>
+        <span>PLAY</span>
+      </button>
+
+      <div class="play-options" role="menu" aria-label="Play options">
+        <a role="menuitem" href="https://tv.apple.com" target="_blank" rel="noopener">Apple TV</a>
+        <a role="menuitem" href="https://www.disneyplus.com" target="_blank" rel="noopener">Disney+</a>
+        <a role="menuitem" href="https://www.hulu.com" target="_blank" rel="noopener">Hulu</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const widget = document.getElementById("playWidget");
+    const btn = document.getElementById("playBtn");
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = widget.classList.toggle("active");
+      btn.setAttribute("aria-expanded", String(isActive));
+    });
+
+    document.addEventListener("click", () => {
+      widget.classList.remove("active");
+      btn.setAttribute("aria-expanded", "false");
+    });
+
+    widget.addEventListener("click", (e) => e.stopPropagation());
+  </script>
+</body>
+</html>
