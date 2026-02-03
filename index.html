@@ -6,24 +6,47 @@
   <title>Play Widget</title>
 
   <style>
-    :root{
-      --bg: #000;
-      --btn-bg: #0f2a31;          /* deep teal */
-      --btn-border: rgba(140, 200, 210, 0.25);
-      --btn-shadow: rgba(0,0,0,0.55);
-      --text: #fff;
-
-      --panel-bg: #121212;
-      --panel-shadow: rgba(0,0,0,0.65);
-    }
-
     body{
       margin:0;
       min-height:100vh;
+      background:#000;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       display:flex;
-      align-items:flex-start;
       justify-content:center;
-      padding-top:80px;
-      background: var(--bg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      col
+      align-items:flex-start;
+      padding:60px 16px;
+      color:#fff;
+    }
+
+    /* Debug wrapper so you KNOW it's on the page */
+    .frame{
+      width:min(720px, 100%);
+      border:2px dashed rgba(255,255,255,0.25); /* debug */
+      padding:24px;
+      border-radius:16px;
+    }
+
+    .play-widget{
+      position:relative;
+      width:min(560px, 100%);
+      margin:0 auto;
+    }
+
+    .play-btn{
+      width:100%;
+      height:96px;
+      border-radius:20px;
+      background:#0f2a31;
+      border:2px solid rgba(180, 230, 235, 0.35);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.65);
+      color:#fff;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+
+      font-size:44px;
+      font-weight:800;
+      letter-spacing:0.5px;
+      cu
