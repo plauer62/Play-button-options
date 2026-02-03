@@ -6,22 +6,30 @@
   <title>Play Widget</title>
 
   <style>
+    :root{
+      --bg:#000;
+      --btn-bg:#0f2a31;
+      --btn-border: rgba(180,230,235,0.35);
+      --panel-bg:#141414;
+      --text:#fff;
+    }
+
     body{
       margin:0;
       min-height:100vh;
-      background:#000;
+      background:var(--bg);
+      color:var(--text);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       display:flex;
       justify-content:center;
       align-items:flex-start;
       padding:60px 16px;
-      color:#fff;
     }
 
-    /* Debug wrapper so you KNOW it's on the page */
+    /* Debug frame so you can SEE it */
     .frame{
       width:min(720px, 100%);
-      border:2px dashed rgba(255,255,255,0.25); /* debug */
+      border:2px dashed rgba(255,255,255,0.25);
       padding:24px;
       border-radius:16px;
     }
@@ -36,10 +44,10 @@
       width:100%;
       height:96px;
       border-radius:20px;
-      background:#0f2a31;
-      border:2px solid rgba(180, 230, 235, 0.35);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.65);
-      color:#fff;
+      background:var(--btn-bg);
+      border:2px solid var(--btn-border);
+      box-shadow:0 12px 30px rgba(0,0,0,0.65);
+      color:var(--text);
 
       display:flex;
       align-items:center;
@@ -49,4 +57,4 @@
       font-size:44px;
       font-weight:800;
       letter-spacing:0.5px;
-      cu
+      cursor:pointer; /* <*
