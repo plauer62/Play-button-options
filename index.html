@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Play Widget</title>
+
+<style>
+  body {
+    background: #000;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+  }
+
+  .play-widget {
+    position: relative;
+    width: 420px;
+  }
+
+  .play-button {
+    width: 100%;
+    cursor: pointer;
+    display: block;
+  }
+
+  .play-options {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
+    background: #121212;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  .play-options a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .play-options a:hover {
+    opacity: 0.7;
+  }
+
+  /* Hover support (desktop) */
+  .play-widget:hover .play-options {
+    display: block;
+  }
+
+  /* Click support (mobile) */
+  .play-widget.active .play-options {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="play-widget" id="playWidget">
+  <img
+    src="Play Button.png"
+    alt="Play"
+    class="play-button"
+  />
+
+  <div class="play-options">
+    <a href="https://tv.apple.com" target="_blank" rel="noopener">Apple TV</a>
+    <a href="https://www.disneyplus.com" target="_blank" rel="noopener">Disney+</a>
+    <a href="https://www.hulu.com" target="_blank" rel="noopener">Hulu</a>
+  </div>
+</div>
+
+<script>
+  const widget = document.getElementById("playWidget");
+
+  widget.addEventListener("click", (e) => {
+    e.stopPropagation();
+    widget.classList.toggle("active");
+  });
+
+  document.addEventListener("click", () => {
+    widget.classList.remove("active");
+  });
+</script>
+
+</body>
+</html>
